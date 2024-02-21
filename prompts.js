@@ -216,10 +216,39 @@ const MoreDangerPrompts = [
   },
 ];
 
-// names
-// Disney princesses
-// Harry Potter characters
-// Easy as "ABC"
+const FoodPoisoningPrompts = [
+  {
+    system: "Finish the sentence. Name a specific food",
+    user: "I've got food poisoning. It must have been from...",
+  },
+  {
+    system: "Finish the sentence. Name a specific food",
+    user: "I think I've got food poisoning. It must have been from...",
+  },
+  {
+    system: "Finish the sentence. Name a specific food",
+    user: "I'm not feeling great, I think it was something I ate. It must have been from...",
+  },
+];
+
+const ShitJobsPrompts = [
+  {
+    system: "Finish the sentence. Name a specific job",
+    user: "I hate my job. I'm a...",
+  },
+  {
+    system: "Finish the sentence. Name a specific job",
+    user: "I have the worst job. I'm a...",
+  },
+  {
+    system: "Finish the sentence. Name a specific job",
+    user: "My job is terrible. I'm a...",
+  },
+  {
+    system: "Finish the sentence. Name a specific jobs",
+    user: "My job is soul-destroying. I'm a...",
+  },
+];
 
 const TV = "TV";
 const UK_TOWNS = "UK_Towns";
@@ -236,6 +265,8 @@ const DISNEY_PRINCESSES = "Disney_Princesses";
 const EASY_AS = "Easy_As";
 const DANGER = "Danger";
 const MORE_DANGER = "More_Danger";
+const FOOD_POISONING = "Food_Poisoning";
+const SHIT_JOBS = "Shit_Jobs";
 
 const ALL_TESTS = {
   [TV]: {
@@ -309,6 +340,16 @@ const ALL_TESTS = {
     prompts: MoreDangerPrompts,
     evalPrompt: null,
   },
+  [FOOD_POISONING]: {
+    prompts: FoodPoisoningPrompts,
+    evalPrompt:
+      "What is the name of the specific food mentioned, return with a JSON object in the format. Return the name in lower case with no punctuation, like: { name: 'food name' }",
+  },
+  [SHIT_JOBS]: {
+    prompts: ShitJobsPrompts,
+    evalPrompt:
+      "What is the name of the specific job mentioned? Return with a JSON object in the format { name: 'job'}. Make the job lower case with no punctuation.",
+  },
 };
 
 module.exports = {
@@ -328,4 +369,6 @@ module.exports = {
   EASY_AS,
   DANGER,
   MORE_DANGER,
+  FOOD_POISONING,
+  SHIT_JOBS,
 };

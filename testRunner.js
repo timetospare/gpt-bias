@@ -17,13 +17,15 @@ const {
   EASY_AS,
   DANGER,
   MORE_DANGER,
+  FOOD_POISONING,
+  SHIT_JOBS,
 } = require("./prompts");
 
-const MAX_TESTS = 10;
+const MAX_TESTS = 100;
 const MAX_PARALLEL_TESTS = 2;
 
 // Choose the test to run
-const CHOSEN_TEST = MORE_DANGER;
+const CHOSEN_TEST = SHIT_JOBS;
 
 const bucketIntoChunks = (arr) => {
   const chunks = [];
