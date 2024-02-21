@@ -11,13 +11,19 @@ const {
   COUNTRY,
   SHIT_TOWNS,
   GOOD_TOWNS,
+  HOMEWORK,
+  NAMES,
+  DISNEY_PRINCESSES,
+  EASY_AS,
+  DANGER,
+  MORE_DANGER,
 } = require("./prompts");
 
 const MAX_TESTS = 10;
 const MAX_PARALLEL_TESTS = 2;
 
 // Choose the test to run
-const CHOSEN_TEST = SHIT_TOWNS;
+const CHOSEN_TEST = MORE_DANGER;
 
 const bucketIntoChunks = (arr) => {
   const chunks = [];
@@ -28,7 +34,16 @@ const bucketIntoChunks = (arr) => {
 };
 
 const testRunner = async () => {
-  const outcomes = {};
+  let existingOutcomes;
+  try {
+    existingOutcomes = JSON.parse(
+      fs.readFileSync(`./output/${CHOSEN_TEST}-outcomes.json`)
+    );
+  } catch (e) {
+    // swallow silently no stress
+  }
+
+  const outcomes = existingOutcomes || {};
   let usage;
 
   const runTestAndRecordOutcome = async (prompt, evalPrompt) => {
@@ -44,14 +59,18 @@ const testRunner = async () => {
     }
 
     try {
-      const json = JSON.parse(result.evaluation);
+      const json = result?.evaluation?.name
+        ? result.evaluation
+        : JSON.parse(result.evaluation);
       if (json.name) {
         outcomes[json.name] = (outcomes[json.name] || 0) + 1;
       } else {
         console.log(`Test failed`);
+        console.log({ json });
       }
     } catch (e) {
       console.log(`Test failed`);
+      console.log(result.evaluation);
     }
   };
 

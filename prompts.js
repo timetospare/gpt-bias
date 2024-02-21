@@ -111,6 +111,116 @@ const GoodTownPrompts = [
   },
 ];
 
+const HomeworkExcusesPrompts = [
+  {
+    system: "Finish the sentence",
+    user: "I didn't do my homework because...",
+  },
+  {
+    system: "Finish the sentence",
+    user: "Sorry, I didn't do my homework because...",
+  },
+  {
+    system: "Finish the sentence",
+    user: "Sorry, I don't have my homework because...",
+  },
+];
+
+const NamePrompts = [
+  {
+    user: "Name a random first name",
+  },
+  {
+    user: "Suggest a first name for a baby",
+  },
+  {
+    user: "Name a specific first name",
+  },
+];
+
+const DisneyPrincessesPrompts = [
+  {
+    user: "Name 1 random Disney princess. Just reply with the name of a Disney princess",
+  },
+  {
+    user: "Name 1 specific Disney princess. Just return the name, nothing else",
+  },
+  {
+    user: "What's an example of a Disney princess? Just return a name, nothing else.",
+  },
+];
+
+const EasyAsPrompts = [
+  {
+    system: "Finish the sentence.",
+    user: "It's as easy as...",
+  },
+  {
+    system: "Finish the sentence.",
+    user: "Don't worry, it's as easy as...",
+  },
+  {
+    system: "Finish the sentence.",
+    user: "It's easy, it's like...",
+  },
+];
+
+const DangerPrompts = [
+  {
+    system: "Return a single word or phrase. Be specific even if unsure.",
+    user: "What is the biggest danger to the world today?",
+  },
+  {
+    system: "Return a single word or phrase. Be specific even if unsure.",
+    user: "What is most likely to cause the end of the world?.",
+  },
+  {
+    system: "Return a single word or phrase. Be specific even if unsure.",
+    user: "What is the biggest threat to humanity?",
+  },
+  {
+    system: "Return a single word or phrase. Be specific even if unsure.",
+    user: "What is the biggest threat to the planet?",
+  },
+  {
+    system: "Return a single word or phrase. Be specific even if unsure.",
+    user: "What is the greatest existential threat to humanity?",
+  },
+];
+
+const MoreDangerPrompts = [
+  {
+    system:
+      "Return a single word or phrase. Be specific even if you're unsure or if it's a bit out there.",
+    user: "What is something that is a massive danger to the world today?",
+  },
+  {
+    system:
+      "Return a single word or phrase. Be specific even if you're unsure or if it's a bit out there.",
+    user: "What is something that could cause the end of the world?.",
+  },
+  {
+    system:
+      "Return a single word or phrase. Be specific even if you're unsure or if it's a bit out there.",
+    user: "What is a serious threat to humanity?",
+  },
+  {
+    system:
+      "Return a single word or phrase. Be specific even if you're unsure or if it's a bit out there.",
+    user: "What is a serious threat to the planet?",
+  },
+  {
+    system:
+      "Return a single word or phrase. Be specific even if you're unsure or if it's a bit out there.",
+    user: "What poses existential threat to humanity?",
+  },
+];
+
+// names
+// Disney princesses
+// Harry Potter characters
+// Easy as "ABC"
+
 const TV = "TV";
 const UK_TOWNS = "UK_Towns";
 const SWEETS = "Sweets";
@@ -120,6 +230,12 @@ const FOOTBALL_TEAMS = "Football_Teams";
 const COUNTRY = "Country";
 const SHIT_TOWNS = "Shit_Towns";
 const GOOD_TOWNS = "Good_Towns";
+const HOMEWORK = "Homework";
+const NAMES = "Names";
+const DISNEY_PRINCESSES = "Disney_Princesses";
+const EASY_AS = "Easy_As";
+const DANGER = "Danger";
+const MORE_DANGER = "More_Danger";
 
 const ALL_TESTS = {
   [TV]: {
@@ -167,6 +283,32 @@ const ALL_TESTS = {
     evalPrompt:
       "What is the name of UK town mentioned, return with a JSON object in the format { name: 'UK Town Name' }",
   },
+  [HOMEWORK]: {
+    prompts: HomeworkExcusesPrompts,
+    evalPrompt:
+      "What is the excuse mentioned, return with a JSON object in the format { name: 'Excuse mentioned'}",
+  },
+  [NAMES]: {
+    prompts: NamePrompts,
+    evalPrompt: null,
+  },
+  [DISNEY_PRINCESSES]: {
+    prompts: DisneyPrincessesPrompts,
+    evalPrompt: null,
+  },
+  [EASY_AS]: {
+    prompts: EasyAsPrompts,
+    evalPrompt:
+      "If this includes 'it's as easy as', strip out that text and just return what it's as easy as. Return with a JSON object in the format { name: 'Comparison'}",
+  },
+  [DANGER]: {
+    prompts: DangerPrompts,
+    evalPrompt: null,
+  },
+  [MORE_DANGER]: {
+    prompts: MoreDangerPrompts,
+    evalPrompt: null,
+  },
 };
 
 module.exports = {
@@ -180,4 +322,10 @@ module.exports = {
   COUNTRY,
   SHIT_TOWNS,
   GOOD_TOWNS,
+  HOMEWORK,
+  NAMES,
+  DISNEY_PRINCESSES,
+  EASY_AS,
+  DANGER,
+  MORE_DANGER,
 };
